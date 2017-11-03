@@ -2,7 +2,7 @@
     "name": "novelFormatHighlightAndCompleter",
     "displayName": "NovelFormatHighlightAndCompleter",
     "description": "This extension is highlight and complete for custom novel format.",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "publisher": "show0611",
     "engines": {
         "vscode": "^1.17.0"
@@ -15,9 +15,30 @@
     ],
     "main": "./out/extension",
     "contributes": {
-        "commands": [{
-            "command": "extension.sayHello",
-            "title": "Hello World"
+        "languages": [{
+            "id": "pixivNovelFormat",
+            "aliases": ["pixnovfor", "pnf"],
+            "extensions": [".pnf"]
+        },{
+            "id": "kakuyomuNovelFormat",
+            "aliases": ["kynovfor", "knf"],
+            "extensions": [".knf"]
+        }],
+        "snippets": [{
+            "language": "pixivNovelFormat",
+            "path": "./snippets/snippet.json"
+        },{
+            "language": "kakuyomuNovelFormat",
+            "path": "./snippets/snippet.json"
+        }],
+        "grammars": [{
+            "language": "pixivNovelFormat",
+            "scopeName": "si.f5.show.pnf",
+            "path": "./syntaxes/pnf.json"
+        },{
+            "language": "kakuyomuNovelFormat",
+            "scopeName": "si.f5.show.knf",
+            "path": "./syntaxes/knf.json"
         }]
     },
     "scripts": {
