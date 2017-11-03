@@ -1,0 +1,48 @@
+{
+    "comment": "PixivNovelFormat Highlight",
+    "scopeName": "si.f5.show.pnf",
+    "name": "pixivNovelFormat",
+    "comment": ".pnf syntax",
+    "fileTypes": [
+        "pnf"
+    ],
+
+    "patterns": [
+        {"include": "#format"}
+    ],
+    "repository": {
+        "format": {
+            "patterns": [{
+                "match": "(\\[\\[(\\S+):(\\S+)\\s+>\\s+(\\S+)\\]\\]|\\[(\\S+):(\\S+)\\]|\\[(\\S+)\\])",
+                "captures": {
+                    "2": {"patterns": [{"include": "#var"}]},
+                    "3": {"patterns": [{"include": "#argument"}]},
+                    "4": {"patterns": [{"include": "#argument_second"}]},
+                    "5": {"patterns": [{"include": "#var"}]},
+                    "6": {"patterns": [{"include": "#argument"}]},
+                    "7": {"patterns": [{"include": "#var"}]}
+                }
+            }],
+            "repository": {
+                "var": {
+                    "patterns": [{
+                        "match": "(newpage|chapter|pixivimage|jump(uri)?|rb)",
+                        "name": "keyword.type.pnf"
+                    }]
+                },
+                "argument": {
+                    "patterns": [{
+                        "match": "(.+)",
+                        "name": "entity.name.function.pnf"
+                    }]
+                },
+                "argument_second": {
+                    "patterns": [{
+                        "match": "(.+)",
+                        "name": "variable.parameter.pnf"
+                    }]
+                }
+            }
+        }
+    }
+}
